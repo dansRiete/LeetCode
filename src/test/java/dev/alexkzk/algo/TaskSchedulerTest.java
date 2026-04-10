@@ -67,8 +67,8 @@ class TaskSchedulerTest {
     @Test
     void twoDistinctTasksAlternating() {
         // [1,2,1,2] with K=2: between repeated 1s there is only one other task (2)
-        // t=1 exec 1, t=2 exec 2, t=3 wait, t=4 exec 1, t=5 exec 2, t=6 wait → 6
-        assertEquals(6, minTime(new int[]{1, 2, 1, 2}, 2));
+        // t=1 exec 1, t=2 exec 2, t=3 wait (idle ticks down task 2 cooldown too), t=4 exec 1, t=5 exec 2 → 5
+        assertEquals(5, minTime(new int[]{1, 2, 1, 2}, 2));
     }
 
     @Test

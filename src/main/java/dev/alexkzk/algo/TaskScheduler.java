@@ -45,7 +45,7 @@ public class TaskScheduler {
      *              can be executed again
      * @return minimum total time (including any idle periods) to complete all tasks
      */
-    public static int minTime(int[] tasks, int k) {
+    public static int minTime2(int[] tasks, int k) {
         if (tasks == null || tasks.length == 0) {
             return 0;
         }
@@ -58,21 +58,45 @@ public class TaskScheduler {
             int currentTask = tasks[i];
             System.out.println("step " + i + ", processing " + tasks[i]);
             time++;
+            int cooldown = 0;
             if (cooldownMap.get(currentTask) == null || cooldownMap.get(currentTask) == 0) {
                 cooldownMap.put(currentTask, k);
             } else {
-                time += cooldownMap.get(currentTask);
+                cooldown = cooldownMap.get(currentTask);
+                time += cooldown;
             }
             for(int key : cooldownMap.keySet()) {
                 if (key != currentTask) {
-                    int reducedCooldown = cooldownMap.get(key) - 1;
+                    int reducedCooldown = cooldownMap.get(key) - 1 - cooldown;
                     cooldownMap.put(key, reducedCooldown < 0 ? 0 : reducedCooldown);
                 } else {
                     cooldownMap.put(currentTask, k);
                 }
             }
+            System.out.println("cooldown: " + cooldown);
+            System.out.println("put3 " + cooldownMap);
         }
 
+        return time;
+    }
+
+    /**
+     * O(n) solution using last-execution timestamps instead of decrementing cooldown counters.
+     *
+     * <p>For each task, the earliest it can run is either right after the previous task
+     * ({@code time + 1}), or {@code k + 1} slots after it last ran — whichever is later.
+     * A single {@code max()} replaces all the per-key decrement bookkeeping.
+     *
+     * @see #minTime(int[], int)
+     */
+    public static int minTime/*OFromN*/(int[] tasks, int k) {
+        if (tasks == null || tasks.length == 0) return 0;
+        Map<Integer, Integer> lastExec = new HashMap<>();
+        int time = 0;
+        for (int task : tasks) {
+            time = Math.max(time + 1, lastExec.getOrDefault(task, -k) + k + 1);
+            lastExec.put(task, time);
+        }
         return time;
     }
 
@@ -82,10 +106,11 @@ public class TaskScheduler {
 //        System.out.println(minTime(new int[]{1, 1, 1}, 2));   //  7
 //        System.out.println(minTime(new int[]{1, 1, 1}, 100));   //  7
 //        System.out.println(minTime(new int[]{1, 2, 1532, 1}, 2));   //  4
-//        System.out.println(minTime(new int[]{1, 2, 3, 1}, 0));   //  4
+        System.out.println(minTime(new int[]{1, 2, 3, 1}, 0));   //  4
 //        System.out.println(minTime(new int[]{}, 0));   //  0
 //        System.out.println(minTime(null, 0));   //  0
 //        System.out.println(minTime(null, 100));   //  0
+//        System.out.println(minTime(new int[]{1, 2, 1, 2}, 2));   //  6
 //        System.out.println(minTime(new int[]{1, 2, 3, 1, 2, 3}, 3));   //  7 THAT WAS FAILING! PAY ATTENTION THAT COOLDOWN IS REDUCED DURING WAIT TIME AS WELL!
 
     }
