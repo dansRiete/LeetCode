@@ -2,6 +2,7 @@ package dev.alexkzk.algo.easy;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Function;
 
 public class RomanToInteger {
 
@@ -76,10 +77,14 @@ public class RomanToInteger {
     }
 
     public static void main(String[] args) {
-        System.out.println("expected 3, was: " + romanToInt("III"));
-        System.out.println("expected 4, was: " + romanToInt("IV"));
-        System.out.println("expected 9, was: " + romanToInt("IX"));
-        System.out.println("expected 58, was: " + romanToInt("LVIII"));
-        System.out.println("expected 1994, was: " + romanToInt("MCMXCIV"));
+        Map<String, Integer> map = new HashMap<>();
+        map.computeIfAbsent("1", s -> Integer.parseInt(s));
+        System.out.println(map);
+
+//        System.out.println("expected 3, was: " + romanToInt("III"));
+//        System.out.println("expected 4, was: " + romanToInt("IV"));
+//        System.out.println("expected 9, was: " + romanToInt("IX"));
+//        System.out.println("expected 58, was: " + romanToInt("LVIII"));
+//        System.out.println("expected 1994, was: " + romanToInt("MCMXCIV"));
     }
 }
