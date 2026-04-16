@@ -1,5 +1,6 @@
 package dev.alexkzk.algo;
 
+import dev.alexkzk.algo.medium.PalindromeByRemoval;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;

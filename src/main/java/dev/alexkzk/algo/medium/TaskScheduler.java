@@ -1,4 +1,4 @@
-package dev.alexkzk.algo;
+package dev.alexkzk.algo.medium;
 
 import java.util.HashMap;
 import java.util.Map;

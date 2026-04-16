@@ -1,4 +1,4 @@
-package dev.alexkzk.algo;
+package dev.alexkzk.algo.examples;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package dev.alexkzk.algo;
+package dev.alexkzk.algo.medium;
 
 import java.util.*;
 import java.util.stream.Collectors;
