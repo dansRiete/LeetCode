@@ -42,7 +42,7 @@ public class FlightRouter {
                     String[] segParams = seg.split("->");
                     segmentMap.put(segParams[0], segParams[1]);
                 });
-                String origin = segmentMap.keySet().stream().filter(ap -> !segmentMap.values().contains(ap)).findFirst().orElseThrow();
+        String origin = segmentMap.keySet().stream().filter(ap -> !segmentMap.values().contains(ap)).findFirst().orElseThrow();
         List<String> itinerary = new ArrayList<>();
         itinerary.add(origin);
         do {
@@ -84,7 +84,7 @@ public class FlightRouter {
                     String[] segParams = seg.split("->");
                     segmentMap.put(segParams[0], segParams[1]);
                 });
-                Set<String> origins = segmentMap.keySet();
+        Set<String> origins = segmentMap.keySet();
         Set<String> destinations = new HashSet<>(segmentMap.values());
         Set<String> allAirports = Stream.concat(origins.stream(), destinations.stream()).collect(Collectors.toSet());
         int counter = 0;

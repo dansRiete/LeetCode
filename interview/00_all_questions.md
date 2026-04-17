@@ -6,6 +6,8 @@
 1.2. How does `HashMap` handle collisions internally?
 1.3. What is the difference between `Comparable` and `Comparator`?
 1.4. What is the difference between `checked` and `unchecked` exceptions? When do you use each?
+1.5. What is the difference between `LinkedList` and `ArrayDeque`? When would you use each?
+1.6. Virtual Threads (Java 21), Records, Sealed Classes, Pattern matching instanceof — what each solves and when to use.
 
 ---
 
@@ -17,6 +19,10 @@
 2.4. What is the difference between `ExecutorService`, `ScheduledExecutorService`, and `ForkJoinPool`?
 2.5. How do you handle backpressure when consuming a high-volume external API?
 2.6. What is `ReentrantLock` and how does it differ from `synchronized`?
+2.7. What is the difference between `Thread.sleep()` and `Object.wait()`?
+2.8. What is a deadlock? Describe the four Coffman conditions and one prevention strategy.
+2.9. What is CountDownLatch, Semaphore, BlockingQueue, and AtomicInteger? When would you use each?
+2.10. CompletableFuture vs Future, thenApply/thenCompose/thenCombine, fan-out with allOf, exception handling with exceptionally/handle/whenComplete.
 
 ---
 
@@ -30,6 +36,11 @@
 ## 4. JVM Internals
 
 4.1. Explain the Java memory model — heap vs stack, young vs old generation
+4.2. Can you have a memory leak in Java despite having a GC? What are GC roots? Give a concrete example.
+4.3. Users report periodic latency spikes with no errors — how do you diagnose and what are the two most common root causes?
+4.4. What is the difference between soft, weak, and phantom references? When would you use WeakReference, and why is WeakHashMap dangerous as a cache?
+4.5. What is the difference between Minor GC and Full GC? Which is more dangerous and why? What triggers a Full GC?
+4.6. What is G1GC and why did it become the default in Java 9? What problem does it solve vs Parallel GC?
 
 ---
 
@@ -40,6 +51,7 @@
 5.3. How do you deserialize a JSON response when the schema may change between partner versions?
 5.4. How do you handle pagination when consuming a partner REST API?
 5.5. How do you secure outbound HTTP calls — OAuth2, API keys, mTLS?
+5.18. What are the main HTTP security approaches? (Basic Auth, API Key, OAuth2, mTLS, JWT, HMAC — when to use each)
 5.6. What is idempotency and why does it matter for integration connectors?
 5.7. How do you handle partial failures — partner returns 200 but with error fields in the body?
 5.8. How would you design a connector that needs to fan out to 5 partner APIs and aggregate results?
@@ -48,6 +60,10 @@
 5.11. How do you implement a dead letter queue in plain Java without a framework?
 5.12. How do you distinguish between a transient failure (retry) and a permanent failure (fail fast)?
 5.13. How do you handle a partner API that is rate-limited (429 responses)?
+5.14. What is a connection pool, what happens when exhausted, what is a connection leak, HTTP keep-alive, HTTP/1.1 vs HTTP/2, connection vs read timeout scenario.
+5.15. What is HTTP polling, its drawbacks, alternatives (webhooks/SSE/WebSocket), and webhook security with HMAC signatures.
+5.16. HTTP methods (safe vs idempotent), PUT vs PATCH, status code categories, 401 vs 403, REST constraints.
+5.17. JMS Queue vs Topic, acknowledgement modes, persistent vs non-persistent messages, JMS vs Kafka.
 
 ---
 
@@ -70,6 +86,7 @@
 7.3. How do you perform load testing — tools, metrics you watch, what defines a pass/fail?
 7.4. What is a contract test (e.g. Pact)? Why is it useful for partner integrations?
 7.5. How do you measure test coverage and what coverage percentage is "good enough"?
+7.6. Mock vs stub vs spy, test pyramid, testing async code (CountDownLatch/Awaitility), flaky tests and their causes.
 
 ---
 
@@ -80,6 +97,7 @@
 8.3. What is the difference between Cloud Run and GKE for deploying a microservice?
 8.4. How do you manage secrets (API keys, credentials) in GCP?
 8.5. How would you use Cloud Monitoring/Logging to alert on integration failures?
+8.6. What is the difference between SQS and SNS? SQS Standard vs FIFO? IAM user vs role vs policy?
 
 ---
 
@@ -90,6 +108,7 @@
 9.3. How do you approach deprecating and retiring an old integration?
 9.4. How do you design for observability in an integration service — what do you log, what do you metric?
 9.5. How would you onboard a new business partner — what's your process from contract to production?
+9.6. Name all 5 SOLID principles. Give concrete violation examples for LSP, OCP, and ISP.
 
 ---
 
@@ -115,6 +134,7 @@
 - `1.2_hashmap_collisions.md`
 - `1.3_comparable_vs_comparator.md`
 - `1.4_checked_vs_unchecked.md`
+- `1.5_linkedlist_vs_arraydeque.md`
 
 ### 02_multithreading/
 - `2.1_synchronized.md`
