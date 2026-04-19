@@ -1,8 +1,11 @@
 package dev.alexkzk.algo.easy;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class RomanToInteger {
 
@@ -76,10 +79,23 @@ public class RomanToInteger {
         return summ;
     }
 
+    private static Map<Character, Integer> sortedString(String s) {
+        Map<Character, Integer> map = new HashMap<>();
+        for(char c : s.toCharArray()) {
+            map.merge(c, 1, Integer::sum);
+        }
+        return map;
+
+    }
     public static void main(String[] args) {
         Map<String, Integer> map = new HashMap<>();
         map.computeIfAbsent("1", s -> Integer.parseInt(s));
         System.out.println(map);
+
+//        System.out.println(Arrays.stream(new String[]{"hello", "world"}).collect(Collectors.groupingBy(s -> sortedString(s), Function.identity())));
+
+        new ArrayList<>(Arrays.stream(new String[]{"hello", "world"}).collect(Collectors.toMap(s -> sortedString(s), Function.identity())).values());
+        map.computeIfAbsent("I", s -> Integer.parseInt(s));
 
 //        System.out.println("expected 3, was: " + romanToInt("III"));
 //        System.out.println("expected 4, was: " + romanToInt("IV"));
