@@ -6,15 +6,15 @@ import java.util.stream.Collectors;
 public class GroupAnagrams {
     /** LC #49 — Group Anagrams [Medium] */
     public List<List<String>> groupAnagrams(String[] strs) {
-        return new ArrayList<>(Arrays.stream(strs).collect(Collectors.groupingBy(this::sortedString)).values());
+        return new ArrayList<>(Arrays.stream(strs).collect(Collectors.groupingBy(this::getKey)).values());
     }
 
-    private Map<Character, Integer> sortedString(String s) {
-        Map<Character, Integer> map = new HashMap<>();
+    private String getKey(String s) {
+        int[] fingerprint = new int[26];
         for(char c : s.toCharArray()) {
-            map.merge(c, 1, Integer::sum);
+            fingerprint[c - 'a']++;
         }
-        return map;
+        return Arrays.toString(fingerprint);
 
     }
 }
