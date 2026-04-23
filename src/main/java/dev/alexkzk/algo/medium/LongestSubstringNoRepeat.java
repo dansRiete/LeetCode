@@ -34,29 +34,47 @@ public class LongestSubstringNoRepeat {
      * @param s input string
      * @return length of the longest substring without repeating characters
      */
-    public static int lengthOfLongestSubstring2(String s) {
-        char[] chars = s.toCharArray();
-        Set<Character> recentChars = new HashSet();
-        boolean duplicate = false;
-        int maxLength = 0;
-        int lastSubstringIndex = 0;
-        for(int i = 0; i < chars.length; i++) {
-            char currentChar = chars[i];
-            if (!recentChars.contains(currentChar)) {
-                recentChars.add(currentChar);
-            } else {
-                duplicate = true;
-                maxLength = (i - lastSubstringIndex) > maxLength ? (i - lastSubstringIndex) : maxLength;
-                System.out.println(currentChar + " repeated char at index " + i + ", lastSubstringIndex " + lastSubstringIndex);
-                lastSubstringIndex = i;
-                recentChars = new HashSet();
-                recentChars.add(currentChar);
-            }
+    public static int lengthOfLongestSubstring(String s) {
+        if (s.length() == 0) {
+            return 0;
         }
-        return duplicate == false ? chars.length : maxLength;
+        if (s.length() == 1) {
+            return 1;
+        }
+        Set<Character> set = new HashSet<>();
+        set.add(s.charAt(0));
+        int max = 1;
+        for (int l = 0, r = 1; l < s.length() && r < s.length(); ) {
+            char rChar = s.charAt(r);
+            while (set.contains(rChar) && l != r) {
+                set.remove(s.charAt(l));
+                l++;
+            }
+            set.add(rChar);
+            max = Math.max(max, r - l + 1);
+            r++;
+        }
+        return max;
     }
 
-    public static int lengthOfLongestSubstring(String s) {
+    public static int lengthOfLongestSubstringShortened(String s) {
+        Set<Character> set = new HashSet<>();
+        int max = 0;
+        for (int l = 0, r = 0; r < s.length(); ) {
+            if (!set.contains(s.charAt(r))) {
+                set.add(s.charAt(r));
+                max = Math.max(max, r - l + 1);
+                r++;
+            } else {
+                set.remove(s.charAt(l));
+                l++;
+            }
+        }
+        return max;
+    }
+
+
+    public static int lengthOfLongestSubstringReference(String s) {
         Map<Character, Integer> lastSeen = new HashMap<>();
         int max = 0, left = 0;
         for (int i = 0; i < s.length(); i++) {
