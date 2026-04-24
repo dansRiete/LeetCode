@@ -34,6 +34,20 @@ public class IntegerToRoman {
      * @return Roman numeral string representation of {@code num}
      */
     public static String intToRoman(int num) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        int[] intArr = new int[]{1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+        String[] roman = new String[]{"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+        String result = "";
+        for (int i = 0; i < intArr.length; i++) {
+            if(num >= intArr[i]){
+                int count = num / intArr[i];
+                num -= intArr[i]*count;
+                result += roman[i].repeat(count);
+            }
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(intToRoman(3749));
     }
 }
