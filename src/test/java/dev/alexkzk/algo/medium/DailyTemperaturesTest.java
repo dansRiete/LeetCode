@@ -65,7 +65,7 @@ class DailyTemperaturesTest {
     @Test
     void warmerDayAtEnd() {
         // only the last day is warmer than the first
-        assertArrayEquals(new int[]{4, 3, 2, 1, 0}, solve(30, 31, 32, 33, 100));
+        assertArrayEquals(new int[]{4, 3, 2, 1, 0}, solve(30, 30, 30, 30, 100));
     }
 
     @Test

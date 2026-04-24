@@ -6,15 +6,15 @@ import java.util.Set;
 public class LongestSubstringNoRepeat {
     /** LC #3 — Longest Substring Without Repeating Characters [Medium] */
     public static int lengthOfLongestSubstring(String s) {
-        Set<Character> set = new HashSet<>();
+        Set<Character> charSet = new HashSet<>();
         int max = 0;
-        for (int l = 0, r = 0; r < s.length(); ) {
-            if (!set.contains(s.charAt(r))) {
-                set.add(s.charAt(r));
-                max = Math.max(max, r - l + 1);
+        for(int l = 0, r = 0; r < s.length();) {
+            if(!charSet.contains(s.charAt(r))) {
+                charSet.add(s.charAt(r));
+                max = Math.max(max, charSet.size());
                 r++;
             } else {
-                set.remove(s.charAt(l));
+                charSet.remove(s.charAt(l));
                 l++;
             }
         }
