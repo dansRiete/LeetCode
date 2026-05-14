@@ -1,0 +1,54 @@
+{
+  "name": "AC vs Vibration (test)",
+  "properties": {
+    "type": "xy",
+    "shape": "chronograf-v2",
+    "geom": "step",
+    "xColumn": "_time",
+    "yColumn": "_value",
+    "position": "overlaid",
+    "queries": [
+      {
+        "name": "AC state",
+        "editMode": "advanced",
+        "text": "from(bucket: \"smarthouse-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"mqtt\")\n  |> filter(fn: (r) => r[\"location_id\"] == \"935-CORKWOOD-AC\" and r[\"_field\"] == \"state\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\n  |> map(fn: (r) => ({r with _value: float(v: r._value) * 1000.0}))",
+        "builderConfig": {"buckets": [], "tags": [], "functions": [], "aggregateWindow": {"period": "auto", "fillValues": false}}
+      },
+      {
+        "name": "Vibration",
+        "editMode": "advanced",
+        "text": "from(bucket: \"smarthouse-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"mqtt\")\n  |> filter(fn: (r) => r[\"location_id\"] == \"0xa4c138b53c1c52c4\" and r[\"_field\"] == \"vibration\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: true)\n  |> fill(usePrevious: true)\n  |> map(fn: (r) => ({r with _value: r._value * 600.0}))",
+        "builderConfig": {"buckets": [], "tags": [], "functions": [], "aggregateWindow": {"period": "auto", "fillValues": false}}
+      },
+      {
+        "name": "FAN state",
+        "editMode": "advanced",
+        "text": "from(bucket: \"smarthouse-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"mqtt\")\n  |> filter(fn: (r) => r[\"location_id\"] == \"935-CORKWOOD-FAN\" and r[\"_field\"] == \"state\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: true)\n  |> fill(usePrevious: true)\n  |> map(fn: (r) => ({r with _value: r._value * 700.0}))",
+        "builderConfig": {"buckets": [], "tags": [], "functions": [], "aggregateWindow": {"period": "auto", "fillValues": false}}
+      },
+      {
+        "name": "DEH",
+        "editMode": "advanced",
+        "text": "from(bucket: \"smarthouse-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"mqtt\")\n  |> filter(fn: (r) => r[\"location_id\"] == \"DEH\" and (r[\"_field\"] == \"power\" or r[\"_field\"] == \"state\"))\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\n  |> map(fn: (r) => ({r with _value: if r._field == \"state\" then float(v: r._value) * 550.0 else float(v: r._value)}))",
+        "builderConfig": {"buckets": [], "tags": [], "functions": [], "aggregateWindow": {"period": "auto", "fillValues": false}}
+      }
+    ],
+    "axes": {
+      "x": {"bounds": ["",""], "label": "", "prefix": "", "suffix": "", "base": "10", "scale": "linear"},
+      "y": {"bounds": ["",""], "label": "", "prefix": "", "suffix": "", "base": "10", "scale": "linear"}
+    },
+    "colors": [
+      {"id": "color-ac-state",  "type": "scale", "hex": "#90EE90", "name": "AC state",       "value": 0},
+      {"id": "color-vibration", "type": "scale", "hex": "#1A6B2F", "name": "AC vibration",   "value": 0},
+      {"id": "color-fan",       "type": "scale", "hex": "#1E90FF", "name": "FAN state",      "value": 0},
+      {"id": "color-deh-power", "type": "scale", "hex": "#CC5500", "name": "DEH power",      "value": 0},
+      {"id": "color-deh-state", "type": "scale", "hex": "#FF7E27", "name": "DEH state",      "value": 0}
+    ],
+    "note": "",
+    "showNoteWhenEmpty": false,
+    "legendColorizeRows": true,
+    "legendHide": false,
+    "legendOpacity": 1,
+    "legendOrientationThreshold": 100000000
+  }
+}

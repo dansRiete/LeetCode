@@ -13,6 +13,13 @@ class MergeIntervalsTest {
 
     // ── empty / trivial ──────────────────────────────────────────────────────
 
+
+    @Test
+    void test() {
+        System.out.println("FB".hashCode());
+        System.out.println("Ea".hashCode());
+    }
+
     @Test
     void emptyInput() {
         assertArrayEquals(new int[][]{}, merge());

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="3.0"
+             xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
+
+    <persistence-unit name="jpa-practise" transaction-type="RESOURCE_LOCAL">
+        <class>dev.alexkzk.jpa.entity.Customer</class>
+        <class>dev.alexkzk.jpa.entity.Order</class>
+        <class>dev.alexkzk.jpa.entity.OrderItem</class>
+        <class>dev.alexkzk.jpa.entity.Product</class>
+
+        <properties>
+            <property name="jakarta.persistence.jdbc.driver"   value="org.postgresql.Driver"/>
+            <property name="jakarta.persistence.jdbc.url"      value="jdbc:postgresql://192.168.0.201:24870/smarthouse"/>
+            <property name="jakarta.persistence.jdbc.user"     value="smarthouse"/>
+            <property name="jakarta.persistence.jdbc.password" value="smarthouse"/>
+
+            <property name="hibernate.default_schema"          value="jpa_practise"/>
+            <property name="hibernate.hbm2ddl.auto"            value="create-drop"/>
+            <property name="hibernate.show_sql"                value="true"/>
+            <property name="hibernate.format_sql"              value="true"/>
+            <property name="hibernate.highlight_sql"           value="false"/>
+        </properties>
+    </persistence-unit>
+
+</persistence>

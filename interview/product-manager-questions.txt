@@ -1,0 +1,38 @@
+1. Translation of Requirements
+An SPM's biggest pain point is often the gap between a business "need" and a technical "execution."
+
+"Can you describe a time you took a vague stakeholder request and translated it into a concrete technical design?"
+
+"How do you handle situations where a requested feature is technically unfeasible or would cause significant technical debt?"
+
+"How do you communicate complex technical limitations to non-technical team members?"
+
+2. Full-Stack Ownership & Reliability
+Given the JD's emphasis on the "complete development life cycle" and "highly available cloud solutions":
+
+"When designing a new Microservice using Spring Boot, how do you ensure it is 'highly available' once it hits production?"
+
+"What is your approach to testing (unit, integration, and E2E) to ensure that product releases are stable and bug-free?"
+
+"Describe your experience with CI/CD. How do you ensure that a code change doesn't break the existing user experience?"
+
+3. Mentorship and Leadership
+The JD explicitly mentions mentoring junior members and "training entry-level engineers."
+
+"What is your philosophy on code reviews? How do you use them as a tool for mentoring rather than just gatekeeping?"
+
+"If a junior developer is consistently missing deadlines or struggling with Spring/JPA best practices, how do you step in to help?"
+
+4. Agile Process & Prioritization
+"We operate in an Agile/Scrum environment. How do you handle 'scope creep' during a sprint?"
+
+"If we have a critical production bug and a high-priority feature launch both due on Friday, how do you approach that trade-off?"
+
+"What do you believe is the most important part of a successful Sprint Planning session?"
+
+5. Data and Architecture
+Because the role mentions both Relational and NoSQL (ElasticSearch, Mongo), they may ask about the "why" behind the tech:
+
+"When would you recommend using a NoSQL solution like MongoDB or ElasticSearch over a standard Postgres/MySQL database for a new feature?"
+
+"How do you ensure data integrity when working with complex data models across multiple microservices?"

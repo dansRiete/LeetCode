@@ -1,0 +1,63 @@
+Section,Topic,File,Status,Confidence,JD Relevance,Notes
+01 Core Java,HashMap collisions & internals,01_core_java/1.2_hashmap_collisions.md,Not Started,,,
+01 Core Java,Comparable vs Comparator,01_core_java/1.3_comparable_vs_comparator.md,Not Started,,,
+01 Core Java,Checked vs Unchecked exceptions,01_core_java/1.4_checked_vs_unchecked.md,Not Started,,,
+01 Core Java,LinkedList vs ArrayDeque,01_core_java/1.5_linkedlist_vs_arraydeque.md,Not Started,,,
+01 Core Java,Modern Java features (records lambdas streams),01_core_java/1.6_modern_java_features.md,Not Started,,,
+02 Multithreading,synchronized keyword,02_multithreading/2.1_synchronized.md,Not Started,,,
+02 Multithreading,ThreadLocal,02_multithreading/2.2_threadlocal.md,Not Started,,,
+02 Multithreading,volatile,02_multithreading/2.3_volatile.md,Not Started,,,
+02 Multithreading,ExecutorService & thread pools,02_multithreading/2.4_executor_service.md,Not Started,,,
+02 Multithreading,Backpressure,02_multithreading/2.5_backpressure.md,Not Started,,,
+02 Multithreading,ReentrantLock,02_multithreading/2.6_reentrant_lock.md,Not Started,,,
+02 Multithreading,wait vs sleep,02_multithreading/2.7_wait_vs_sleep.md,Not Started,,,
+02 Multithreading,Deadlock detection & prevention,02_multithreading/2.8_deadlock.md,Not Started,,,
+02 Multithreading,Semaphore / BlockingQueue / Atomic,02_multithreading/2.9_semaphore_blockingqueue_atomic.md,Not Started,,,
+02 Multithreading,CompletableFuture,02_multithreading/2.10_completable_future.md,Not Started,,,
+02 Multithreading,ConcurrentHashMap internals,02_multithreading/2.11_concurrent_hash_maps.md,Not Started,,,
+03 Streams & Functional,Optional & orElse patterns,03_streams_functional/3.1_optional_orelse.md,Not Started,,,
+03 Streams & Functional,Functional interfaces,03_streams_functional/3.2_functional_interfaces.md,Not Started,,,
+04 JVM Internals,Java memory model,04_jvm_internals/4.1_java_memory_model.md,Not Started,,,
+04 JVM Internals,GC basics & memory leaks,04_jvm_internals/4.2_gc_basics_and_memory_leaks.md,Not Started,,,
+04 JVM Internals,GC latency spikes diagnosis,04_jvm_internals/4.3_gc_latency_spikes_diagnosis.md,Not Started,,,
+04 JVM Internals,Reference types (soft weak phantom),04_jvm_internals/4.4_reference_types.md,Not Started,,,
+04 JVM Internals,Minor vs Full GC,04_jvm_internals/4.5_minor_vs_full_gc.md,Not Started,,,
+04 JVM Internals,G1GC vs ParallelGC,04_jvm_internals/4.6_g1gc_vs_parallel_gc.md,Not Started,,,
+05 HTTP & Integrations,Retry & exponential backoff,05_http_integrations/5.1_retry_exponential_backoff.md,Not Started,,,
+05 HTTP & Integrations,Timeouts,05_http_integrations/5.2_timeouts.md,Not Started,,,
+05 HTTP & Integrations,JSON schema evolution,05_http_integrations/5.3_json_schema_evolution.md,Not Started,,,
+05 HTTP & Integrations,Pagination strategies,05_http_integrations/5.4_pagination.md,Not Started,,,
+05 HTTP & Integrations,Securing HTTP calls,05_http_integrations/5.5_securing_http_calls.md,Not Started,,,
+05 HTTP & Integrations,Partial failures,05_http_integrations/5.7_partial_failures.md,Not Started,,,
+05 HTTP & Integrations,Fan-out patterns,05_http_integrations/5.8_fan_out.md,Not Started,,,
+05 HTTP & Integrations,Circuit breaker,05_http_integrations/5.9_circuit_breaker.md,Not Started,,,
+05 HTTP & Integrations,Bulkhead pattern,05_http_integrations/5.10_bulkhead.md,Not Started,,,
+05 HTTP & Integrations,Dead letter queue,05_http_integrations/5.11_dead_letter_queue.md,Not Started,,,
+05 HTTP & Integrations,Transient vs permanent failures,05_http_integrations/5.12_transient_vs_permanent.md,Not Started,,,
+05 HTTP & Integrations,Rate limiting,05_http_integrations/5.13_rate_limiting.md,Not Started,,,
+05 HTTP & Integrations,Connection pooling,05_http_integrations/5.14_connection_pooling.md,Not Started,,,
+05 HTTP & Integrations,HTTP polling vs webhooks,05_http_integrations/5.15_http_polling_webhooks.md,Not Started,,,
+05 HTTP & Integrations,HTTP specs & REST,05_http_integrations/5.16_http_specs_rest.md,Not Started,,,
+05 HTTP & Integrations,JMS messaging,05_http_integrations/5.17_jms_messaging.md,Not Started,,,
+06 gRPC,gRPC vs REST,06_grpc/6.1_grpc_vs_rest.md,Not Started,,,
+06 gRPC,gRPC patterns,06_grpc/6.2_grpc_patterns.md,Not Started,,,
+06 gRPC,Protobuf vs JSON,06_grpc/6.3_protobuf_vs_json.md,Not Started,,,
+06 gRPC,gRPC deadlines,06_grpc/6.4_grpc_deadlines.md,Not Started,,,
+06 gRPC,gRPC authentication,06_grpc/6.5_grpc_authentication.md,Not Started,,,
+06 gRPC,gRPC client disconnect,06_grpc/6.6_grpc_client_disconnect.md,Not Started,,,
+06 gRPC,Protobuf versioning,06_grpc/6.7_protobuf_versioning.md,Not Started,,,
+07 Testing,Mocks / stubs / spies / test pyramid / async / flaky,07_testing/7.6_mocks_stubs_spies_pyramid_async_flaky.md,Not Started,,,
+08 Cloud,AWS SQS / SNS / IAM,08_gcp_cloud/8.6_aws_sqs_sns_iam.md,Not Started,High,JD requires AWS
+09 Design & Architecture,SOLID & DRY principles,09_design_architecture/9.6_solid_dry.md,Not Started,,,
+10 RDBMS/SQL,PostgreSQL vs MySQL vs Oracle,10_rdbms/10.1_postgres_mysql_oracle.md,Not Started,,,
+10 RDBMS/SQL,SQL advanced (indexes / transactions / window functions),10_rdbms/10.2_sql_advanced.md,Not Started,High,JD: data integrity & performance
+13 Spring,Spring Boot & auto-configuration,13_spring/13.1_spring_boot_basics.md,Not Started,High,JD: Spring Boot ecosystem
+14 ORM & Hibernate,JPA & Hibernate core concepts,14_orm_hibernate/14.1_jpa_hibernate_basics.md,In Progress,Medium,JD: data processing,N+1 good; entity lifecycle partial (missed transient/managed/removed); @Version good; REQUIRED vs REQUIRES_NEW partial; LazyInitializationException partial; dirty checking weak
+14 ORM & Hibernate,Spring Data JPA repositories,14_orm_hibernate/14.2_spring_data_jpa.md,In Progress,Low,JD: data processing,Page vs Slice not known; @EntityGraph clarified; bulk update anti-pattern partially known
+JD-Specific,Spring Batch — chunk processing & job design,13_spring/13.2_spring_batch.md,In Progress,Medium,JD: batch processing workflows
+JD-Specific,Apigee — API gateway patterns & policies,,Not Started,High,JD: design and maintain REST APIs via Apigee
+JD-Specific,Okta / OAuth2 / OIDC — authentication flows,,Not Started,High,JD: implement auth using Okta
+JD-Specific,Data tokenization / Protegrity concepts,,Not Started,Medium,JD: secure data handling aligned with Protegrity
+JD-Specific,AWS — EC2 / ECS / Lambda / RDS / S3 / SQS deployment,,Not Started,High,JD: develop and deploy in AWS
+11 Behavioral,Behavioral & situational questions,11_behavioral_questions/,Not Started,Medium,
+12 Security,Endpoint vulnerability checks,12_security/12.1_endpoint_vulnerability_checks.md,Not Started,High,JD: secure communication & data handling

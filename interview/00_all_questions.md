@@ -112,11 +112,113 @@
 
 ---
 
-## 10. Behavioral / Leadership
+## 10. RDBMS
 
-10.1. Tell me about a time an integration you owned went down in production. What happened, how did you respond?
-10.2. How do you push back on a product requirement that you believe is technically risky?
-10.3. How do you mentor a junior engineer who is struggling with a complex integration task?
+10.1. What are the advantages of PostgreSQL, MySQL, and Oracle? When would you choose each?
+
+---
+
+## 12. Security
+
+12.1. How do you check your code / endpoints for security vulnerabilities?
+
+---
+
+## 13. Spring Boot
+
+13.1. What is Spring Boot? How does auto-configuration work? What does @SpringBootApplication do?
+
+---
+
+## 11. Behavioral / Leadership
+
+11.1. Tell me about a time an integration you owned went down in production. What happened, how did you respond?
+11.2. How do you push back on a product requirement that you believe is technically risky?
+11.3. How do you mentor a junior engineer who is struggling with a complex integration task?
+
+---
+
+## 15. AI Engineering
+
+### 15.1 LLM Practice
+15.1.1. How do LLMs work?
+15.1.2. What is temperature and top-p sampling? How do they affect outputs?
+15.1.3. What is the context window and what happens when you exceed it? How do you handle long documents?
+15.1.4. How do you do memory management and context management with LLMs?
+
+### 15.2 RAG Systems
+15.2.1. What's RAG? Explain the complete process.
+15.2.2. Text vs Vector search — when would you use each?
+15.2.3. You're making a system for huge PDF reports. How would you process them?
+15.2.4. How would you handle a model hallucinating when no information is found in the given context?
+15.2.5. What are common RAG failure points and how do you debug them?
+15.2.6. How do you handle citations and source attribution in a RAG system?
+15.2.7. What is semantic caching?
+15.2.8. How do you scale a RAG system to 10M+ articles?
+15.2.9. What are the key tradeoffs when designing a RAG system?
+
+### 15.3 Agents and Tool Use
+15.3.1. What makes an AI system agentic?
+15.3.2. What are the essential components of an agent beyond an LLM?
+15.3.3. How do agents decide which tool to use?
+15.3.4. When is an agent the wrong solution?
+15.3.5. How do you explain agentic systems to non-technical stakeholders?
+15.3.6. How do you detect and stop infinite planning loops?
+15.3.7. How do you implement termination conditions in long-running agents?
+15.3.8. How do you sandbox tool execution safely?
+15.3.9. How do you handle tool failures, retries, and idempotency in agents?
+15.3.10. What are the biggest security risks with tool-using agents?
+
+### 15.4 Testing and Evaluation
+15.4.1. How do you ensure the output from LLMs is consistent and accurate?
+15.4.2. How do you evaluate a chatbot?
+15.4.3. What metrics do you consider when evaluating LLM performance?
+15.4.4. How do you build a golden dataset for evaluation?
+15.4.5. How do you detect and mitigate hallucinations?
+15.4.6. How would you prevent factual errors in a summarization system?
+15.4.7. How do you debug a RAG chatbot giving confident but wrong answers?
+15.4.8. How do you evaluate a RAG pipeline?
+15.4.9. How do you evaluate agent performance? What metrics matter (tool selection quality, action advancement, context adherence)?
+
+### 15.5 Monitoring
+15.5.1. What operational/business metrics matter for AI systems?
+15.5.2. How would you evaluate and monitor a model in production, not just offline?
+15.5.3. How would you test a new model before full deployment?
+15.5.4. How do you measure hallucination rate in production?
+15.5.5. How do you monitor and observe autonomous agent behavior in production?
+
+### 15.6 Cost and Latency Optimization
+15.6.1. How do you reduce latency in GenAI applications?
+15.6.2. What is time to first token and why does it matter for user experience?
+15.6.3. How would you benchmark each LLM call in a multi-step pipeline to identify latency bottlenecks?
+15.6.4. How do you reduce token costs?
+15.6.5. Cost vs quality trade-offs: when is a small open-source model "good enough"?
+15.6.6. What is model tiering? When do you route to a small distilled model vs a large LLM?
+15.6.7. Your app gets 1M queries/day — how do you optimize cost?
+15.6.8. Estimate the budget for a RAG pipeline at enterprise scale (e.g. 300,000 legal contracts).
+
+### 15.7 Safety and Guardrails
+15.7.1. When and how would you implement LLM guardrails?
+15.7.2. How do you handle data privacy and PII in prompts and logs?
+15.7.3. How do you protect against prompt injection and jailbreaking?
+15.7.4. How would you build a system that detects whether content violates policy or contains offensive material?
+15.7.5. Your application generates code that gets executed. How do you prevent malicious code generation and execution?
+
+### 15.8 Fine-tuning and Training *(specialized — only if JD mentions it)*
+15.8.1. When would you fine-tune vs use prompt engineering vs RAG?
+15.8.2. What is instruction tuning and how does it differ from pre-training?
+15.8.3. What is PEFT/LoRA and when would you use it?
+15.8.4. Explain the RLHF pipeline: supervised fine-tuning, reward model training, and PPO. How does DPO simplify this?
+15.8.5. Explain quantization — what are the trade-offs between model size, speed, and accuracy?
+15.8.6. How do you convert implicit user behavior (edits, acceptance, rejection) into training signals?
+
+### 15.9 LLM Theory *(specialized — only if JD mentions it)*
+15.9.1. How do transformers work?
+15.9.2. What is the self-attention mechanism?
+15.9.3. Explain encoder-only, decoder-only, and encoder-decoder architectures. When would you use each?
+15.9.4. What is KV cache? How does it help in LLM inference?
+15.9.5. What is Mixture of Experts (MoE)? How does it improve efficiency?
+15.9.6. What are the differences between BPE, WordPiece, and character-level tokenization?
 
 ---
 
@@ -130,13 +232,13 @@
 ## Answer Files
 
 ### 01_core_java/
-- `1.1_hashmap_vs_concurrenthashmap.md`
 - `1.2_hashmap_collisions.md`
 - `1.3_comparable_vs_comparator.md`
 - `1.4_checked_vs_unchecked.md`
 - `1.5_linkedlist_vs_arraydeque.md`
 
 ### 02_multithreading/
+- `2.11_concurrent_hash_maps.md`
 - `2.1_synchronized.md`
 - `2.2_threadlocal.md`
 - `2.3_volatile.md`
@@ -173,3 +275,12 @@
 - `6.5_grpc_authentication.md`
 - `6.6_grpc_client_disconnect.md`
 - `6.7_protobuf_versioning.md`
+
+### 10_rdbms/
+- `10.1_postgres_mysql_oracle.md`
+
+### 12_security/
+- `12.1_endpoint_vulnerability_checks.md`
+
+### 13_spring/
+- `13.1_spring_boot_basics.md`
