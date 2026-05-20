@@ -3,6 +3,11 @@ package dev.alexkzk.algo.leetcode.medium;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * CUSTOM PROBLEM — not on LeetCode.
+ * Given two strings str1 and str2 where str1.length() == str2.length() + 1,
+ * return all indices in str1 whose removal produces str2.
+ */
 public class RemoveCharString {
 
     public static void main(String[] args) {

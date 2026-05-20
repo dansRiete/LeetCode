@@ -3,6 +3,12 @@ package dev.alexkzk.algo.leetcode.medium;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * LEETCODE #49 — GROUP ANAGRAMS  [Medium] | Expected: ~25 min
+ * ─────────────────────────────────────────────────────────────
+ * Alternative implementation using a character-frequency map as the grouping key
+ * instead of a sorted string. See also {@link GroupAnagrams}.
+ */
 public class Anagram {
 
     public static void main(String[] args) {

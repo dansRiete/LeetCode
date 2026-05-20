@@ -4,6 +4,11 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+/**
+ * CUSTOM PROBLEM — not on LeetCode.
+ * Closest LeetCode analog: #680 Valid Palindrome II (checks only one possible removal).
+ * This version returns ALL indices whose removal produces a palindrome.
+ */
 public class PalindromeByRemoval {
 
     /**

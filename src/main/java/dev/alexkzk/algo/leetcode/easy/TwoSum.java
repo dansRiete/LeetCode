@@ -7,6 +7,8 @@ import java.util.Map;
 public class TwoSum {
 
     /**
+     * LEETCODE #1 — TWO SUM  [Easy] | Expected: ~5 min
+     * ──────────────────────────────────────────────────
      * Given an array of integers and a target, return indices of the two numbers
      * that add up to the target. Exactly one solution exists, same element
      * cannot be used twice.

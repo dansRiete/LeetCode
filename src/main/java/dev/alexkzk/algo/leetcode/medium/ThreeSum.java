@@ -5,6 +5,8 @@ import java.util.List;
 public class ThreeSum {
 
     /**
+     * LEETCODE #15 — 3SUM  [Medium] | Expected: ~30 min
+     * ────────────────────────────────────────────────────
      * Returns all unique triplets in the array that sum to zero.
      *
      * <p><b>Problem:</b> Given an integer array {@code nums}, return all triplets

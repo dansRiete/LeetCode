@@ -6,9 +6,13 @@ import java.util.Map;
 public class TaskScheduler {
 
     /**
+     * CUSTOM VARIANT — not the standard LeetCode #621 (Task Scheduler).
+     * LeetCode #621 allows reordering tasks; this variant requires executing them in the
+     * exact given order and only inserts idle slots where the cooldown forces a wait.
+     * ──────────────────────────────────────────────────────────────────────────────────
      * Returns the minimum total time required to execute all tasks in the given order.
      *
-     * <p><b>Problem:</b> You are given an array {@code tasks} where each element is a I mean,
+     * <p><b>Problem:</b> You are given an array {@code tasks} where each element is a task ID,
      * and an integer {@code k} representing the cooldown period. Tasks must be executed in the
      * exact order they appear in the array. After executing a task with a given ID, the same ID
      * cannot be executed again until at least {@code k} units of time have passed. Each task takes
@@ -110,7 +114,7 @@ public class TaskScheduler {
 //        System.out.println(minTime(new int[]{}, 0));   //  0
 //        System.out.println(minTime(null, 0));   //  0
 //        System.out.println(minTime(null, 100));   //  0
-//        System.out.println(minTime(new int[]{1, 2, 1, 2}, 2));   //  6
+//        System.out.println(minTime(new int[]{1, 2, 1, 2}, 2));   //  5
 //        System.out.println(minTime(new int[]{1, 2, 3, 1, 2, 3}, 3));   //  7 THAT WAS FAILING! PAY ATTENTION THAT COOLDOWN IS REDUCED DURING WAIT TIME AS WELL!
 
     }

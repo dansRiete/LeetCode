@@ -6,6 +6,8 @@ import java.util.List;
 public class GenerateParentheses {
 
     /**
+     * LEETCODE #22 — GENERATE PARENTHESES  [Medium] | Expected: ~25 min
+     * ────────────────────────────────────────────────────────────────────
      * Returns all combinations of well-formed parentheses for n pairs.
      *
      * <p><b>Problem:</b> Given {@code n} pairs of parentheses, generate all combinations of

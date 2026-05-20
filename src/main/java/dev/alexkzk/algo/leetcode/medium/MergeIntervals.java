@@ -1,10 +1,12 @@
 package dev.alexkzk.algo.leetcode.medium;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.List;
 
 /**
+ * LEETCODE #56 — MERGE INTERVALS  [Medium] | Expected: ~20 min
+ * ──────────────────────────────────────────────────────────────
  * MERGE INTERVALS
  * ───────────────
  * Given an array of intervals where intervals[i] = [start_i, end_i], merge all
@@ -40,43 +42,27 @@ public class MergeIntervals {
      * @return merged intervals sorted by start; empty array if input is empty
      */
     public static int[][] merge(int[][] intervals) {
-        Map<Integer, int[]> sortedArrays = new TreeMap<>();
-        for (int[] arr : intervals) {
-            sortedArrays.put(arr[0], arr);
-        }
-        int[][] sortedIntervals = sortedArrays.values().toArray(new int[sortedArrays.size()][]);
-        for(int i = 0; i < sortedIntervals.length; i++) {
-            if(i + 1 < sortedIntervals.length) {
-                int[] mergedArr = mergeArrays(sortedIntervals[i], sortedIntervals[i + 1]);
-                if(mergedArr != null) {
-                    int[][] result = new int[intervals.length - 1][];
-                    intervals[i+1] = mergedArr;
-                    System.arraycopy(intervals, 0, result, 0, i);
-                    System.arraycopy(intervals, i + 1, result, i, intervals.length - i - 1);
-                    intervals = result;
-                    i = 0;
-                }
+        if (intervals == null || intervals.length == 0) return new int[0][];
+        Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
+        List<int[]> merged = new ArrayList<>();
+        int[] current = intervals[0];
+        for (int i = 1; i < intervals.length; i++) {
+            if (intervals[i][0] <= current[1]) {
+                current[1] = Math.max(current[1], intervals[i][1]);
+            } else {
+                merged.add(current);
+                current = intervals[i];
             }
         }
-        print(intervals);
-        return null;
-    }
-
-    static void print(int[][] arr) {
-        System.out.println(Arrays.deepToString(arr));
-    }
-
-    public static int[] mergeArrays(int[] arr1, int[] arr2) {
-        if (arr2[0] >= arr1[0] || arr2[1] <= arr1[1]) {
-            return new int[]{arr1[0], Math.max(arr1[1], arr2[1])};
-        }
-        return null;
+        merged.add(current);
+        return merged.toArray(new int[merged.size()][]);
     }
 
 
 
 
     public static void main(String[] args) {
-        merge(new int[][]{{2,6},{15,18},{1,3},{8,10}});
+        System.out.println(Arrays.deepToString(merge(new int[][]{{2,6},{15,18},{1,3},{8,10}})));
+        // expected: [[1,3],[2,6],[8,10],[15,18]] → [[1,6],[8,10],[15,18]]
     }
 }

@@ -5,7 +5,11 @@ import java.util.*;
 public class WaterTrap {
 
     /**
+     * LEETCODE #42 — TRAPPING RAIN WATER  [Hard] | Expected: ~30 min
+     * ─────────────────────────────────────────────────────────────────
      * Calculates the amount of trapped rainwater.
+     *
+     * <p>For each bar, water it can hold = min(maxLeft, maxRight) − itsHeight, clamped to 0.
      *
      * @param height Array of bar heights
      * @return Total units of water trapped
