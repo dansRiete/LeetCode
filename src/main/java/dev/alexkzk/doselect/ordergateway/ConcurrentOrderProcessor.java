@@ -23,35 +23,27 @@ public class ConcurrentOrderProcessor {
      */
     public boolean processOrder(String sku, int quantity) throws InvalidOrderException {
         if (sku == null || sku.isEmpty()) {
-            throw new InvalidOrderException("SKU must not be empty");
+            throw new InvalidOrderException("SKU is null or empty");
         }
         if (quantity <= 0) {
-            throw new InvalidOrderException("Quantity must be positive, got: " + quantity);
+            throw new InvalidOrderException("Quantity must be greater than 0");
         }
 
-        // Refill and consume are both performed under the lock so they are one atomic unit.
-        // The lock is acquired per-order but held only for nanoseconds (pure arithmetic),
-        // so it does not become a throughput bottleneck under concurrent load.
         lock.lock();
         try {
-            long now = System.nanoTime();
-            long elapsed = now - lastRefillTime.get();
-            if (elapsed > 0) {
-                long newTokens = elapsed / nanoSecondsPerToken;
-                if (newTokens > 0) {
-                    long refilled = Math.min(availableTokens.get() + newTokens, maxBurstCapacity);
-                    availableTokens.set(refilled);
-                    // Advance clock only by minted tokens to preserve sub-token remainder.
-                    lastRefillTime.addAndGet(newTokens * nanoSecondsPerToken);
-                }
-            }
+            long elapsed = System.nanoTime() - lastRefillTime.get();
+            long refill = elapsed / nanoSecondsPerToken;
+            availableTokens.set(Math.min(availableTokens.get() + refill, maxBurstCapacity));
+            lastRefillTime.addAndGet(refill * nanoSecondsPerToken);
             if (availableTokens.get() <= 0) {
                 return false;
+            } else {
+                availableTokens.decrementAndGet();
             }
-            availableTokens.decrementAndGet();
-            return true;
         } finally {
             lock.unlock();
         }
+
+        return true;
     }
 }

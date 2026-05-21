@@ -1,7 +1,5 @@
 package dev.alexkzk.algo.neetcode150.sliding_window;
 
-import dev.alexkzk.algo.medium.SortCharactersByFrequency;
-
 import java.util.Arrays;
 
 public class PermutationInString {

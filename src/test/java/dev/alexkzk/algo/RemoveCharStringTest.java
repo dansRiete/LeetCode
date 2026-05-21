@@ -1,6 +1,6 @@
 package dev.alexkzk.algo;
 
-import dev.alexkzk.algo.medium.RemoveCharString;
+import dev.alexkzk.algo.leetcode.medium.RemoveCharString;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;

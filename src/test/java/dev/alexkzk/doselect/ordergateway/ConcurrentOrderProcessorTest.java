@@ -65,7 +65,7 @@ class ConcurrentOrderProcessorTest {
         // At 50 tokens/sec, 100 ms should yield ~5 new tokens.
         Thread.sleep(100);
 
-        assertTrue(processor.processOrder("SKU-R", 1), "at least one token must have been replenished");
+        assertTrue(processor.processOrder("SKU-R", 2), "at least one token must have been replenished");
     }
 
     // --- Concurrency correctness ---

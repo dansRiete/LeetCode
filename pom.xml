@@ -35,6 +35,18 @@
             <artifactId>postgresql</artifactId>
             <version>42.7.4</version>
         </dependency>
+
+        <!-- Spring — used by doselect/outbox challenge -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>6.1.14</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>6.1.14</version>
+        </dependency>
     </dependencies>
 
     <build>
