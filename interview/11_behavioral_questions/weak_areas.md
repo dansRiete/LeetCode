@@ -79,3 +79,10 @@ In Spring Boot both are exposed via `/actuator/health/readiness` and `/actuator/
 A stateless service does not store any user or session data locally in memory or on disk between requests. Every request contains all the information needed to process it, and any data that needs to persist goes to an external store — a database, a cache like Redis, or a message broker.
 
 In a cloud environment this matters because services run as multiple replicas behind a load balancer, and any replica might handle any request. If state were stored locally, a user's second request might go to a different pod that has no knowledge of the first request. It also means Kubernetes can freely restart, replace, or scale pods without data loss. Stateless design is a prerequisite for horizontal scaling and high availability.
+
+### Tell me about a production incident you fixed. What was the situation, what action did you take, and what was the result? (STAR format)
+
+**Key points:**
+- Ensure you have a structured STAR story ready (Situation, Task, Action, Result).
+- Highlight how you diagnosed the issue (logs, metrics, reproducing it).
+- Explain the immediate mitigation (rollback, hotfix) vs the long-term fix (adding tests, fixing logic).

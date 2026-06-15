@@ -25,58 +25,38 @@ public class FindFirstAndLastPosition {
      * </ul>
      */
     public static int[] searchRange(int[] nums, int target) {
-        int index = findIndex(nums, target);
-        if(index == -1) {
-            return new int[]{-1, -1};
-        } else {
-            boolean leftFound = false;
-            boolean rightFound = false;
-            for(int l = index - 1, r = index + 1;;) {
-                if(!leftFound) {
-                    if(nums[l] == target) {
-                        l--;
-                        if(l <= 0) {
-                            leftFound = true;
-                        }
-                    } else {
-                        l++;
-                        leftFound = true;
-                    }
-                }
-                if(!rightFound) {
-                    if(nums[r] == target) {
-                        r++;
-                        if(r <= nums.length - 1) {
-                            rightFound = true;
-                        }
-                    } else {
-                        r--;
-                        rightFound = true;
-                    }
-                }
-                if(leftFound && rightFound) {
-                    return new int[]{l, r};
-                }
-            }
-        }
-//        return new int[]{-1, -1};
+        return new int[]{findFirst(nums, target), findLast(nums, target)};
     }
 
-    private static int findIndex(int[] nums, int target) {
-        for(int l = 0, r = nums.length - 1; ;) {
-            System.out.println("l=" + l + ", r=" + r);
-            int index = l + ((r - l) / 2);
-            if(nums[index] == target) {
-                return index;
-            } else if (nums[index] < target) {
-                l = index + 1;
-            }  else if (nums[index] > target) {
-                r = index - 1;
-            }
-            if(r<=l) {
-                break;
+    private static int findFirst(int[] nums, int target) {
+        int l = 0, r = nums.length - 1, result = -1;
+        while (l <= r) {
+            int i = l + (r - l) / 2;
+            if (nums[i] == target) {
+                result = i;
+                r = i - 1;   // keep searching left
+            } else if (nums[i] < target) {
+                l = i + 1;
+            } else {
+                r = i - 1;
             }
         }
-        return -1;
+        return result;
+    }
+
+    private static int findLast(int[] nums, int target) {
+        int l = 0, r = nums.length - 1, result = -1;
+        while (l <= r) {
+            int i = l + (r - l) / 2;
+            if (nums[i] == target) {
+                result = i;
+                l = i + 1;   // keep searching right
+            } else if (nums[i] < target) {
+                l = i + 1;
+            } else {
+                r = i - 1;
+            }
+        }
+        return result;
     }
 }

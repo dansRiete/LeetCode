@@ -106,3 +106,202 @@ Distributed data integrity is the hardest problem in microservices. My approach 
 3. **Idempotency keys** on all message consumers so redelivered messages don't cause duplicate writes.
 
 I also run periodic reconciliation jobs to detect drift between services and alert on inconsistency rather than silently accepting it.
+
+---
+
+## 6. General Behavioral & Career
+
+**Q: How do you manage conflicting priorities?**
+
+I evaluate priorities based on business impact and urgency. I communicate transparently with stakeholders, laying out the trade-offs and proposing a revised schedule. If two tasks are truly critical and blocking, I escalate to leadership with a clear summary of the impact so we can make an aligned decision. The key is not to overpromise and fail, but to negotiate and deliver reliably.
+
+---
+
+**Q: Describe a time your advice to management led to a process improvement.**
+
+I noticed our deployments were frequently delayed due to manual regression testing. I gathered data showing we spent 20 hours a week on this. I proposed allocating 10% of our sprint capacity to automate the core test suite. I presented the ROI to management, they approved, and within three months, we reduced deployment time by 80% and caught bugs earlier in the CI pipeline.
+
+---
+
+**Q: Do you prefer to work independently or in a team environment?**
+
+I value a balance of both. I thrive in a collaborative team environment during brainstorming, system design, and code reviews because diverse perspectives lead to better solutions. However, when it comes to deep implementation work or debugging complex issues, I appreciate focused, independent time. Ultimately, I adapt to what the project requires.
+
+---
+
+**Q: Where do you see yourself in five years?**
+
+In five years, I see myself as a Staff Engineer or Technical Lead. I want to be the go-to person for complex architectural decisions and scaling challenges. I also want to take on a stronger mentorship role, helping grow the next generation of engineers on my team, while continuing to align technical execution with business strategy.
+
+---
+
+**Q: How do you handle pressure?**
+
+I handle pressure by breaking down the problem into manageable pieces. During a high-stress situation, like a production outage, I stay calm, communicate clearly with the team, and focus on immediate mitigation. I prioritize tasks and delegate when necessary. After the pressure subsides, I always advocate for a blameless post-mortem so we learn from the event and prevent it from happening again.
+
+---
+
+**Q: How do you measure success?**
+
+I measure success by the impact my work has on the business and the end-users. Technical elegance is important, but if a beautifully engineered system doesn't solve a real user problem or drive business metrics, it's not successful. I also measure success by the growth and health of my team—delivering a project on time but burning out the team is a failure in my book.
+
+---
+
+**Q: Describe a time you experienced conflict in the workplace.**
+
+A colleague and I disagreed strongly on the technology stack for a new service. They wanted to use a shiny new framework, while I preferred a stable, well-understood one. Instead of arguing opinions, I suggested we do a time-boxed spike (proof of concept) for both and evaluate them against our specific requirements: performance, maintainability, and time-to-market. The data showed the stable framework was the better fit, and my colleague agreed because the decision was objective.
+
+---
+
+**Q: Is there a type of work environment you prefer?**
+
+I prefer an environment that values transparency, continuous learning, and ownership. I do my best work in a blameless culture where people are encouraged to take calculated risks and learn from failures. I also appreciate an environment that balances collaborative whiteboarding sessions with quiet, uninterrupted time for deep work.
+
+---
+
+**Q: What are you looking for in your next position?**
+
+I'm looking for a role where I can tackle complex technical challenges at scale and have a tangible impact on the product. I want to work with a talented, collaborative team where I can both learn from others and share my own expertise. Finally, I'm looking for a company with a strong engineering culture that values quality and innovation.
+
+---
+
+**Q: Describe a time you had a disagreement with your boss. How did you respond?**
+
+My manager wanted to push a feature to production immediately to meet a marketing deadline, but I knew the code lacked adequate testing and had potential edge-case bugs. I expressed my concerns privately, outlining the specific risks to user experience and the cost of fixing it post-launch. I proposed a compromise: we release a scaled-back "beta" version behind a feature flag to a small subset of users. My boss appreciated the risk mitigation, and we went with that approach.
+
+---
+
+**Q: What was your biggest accomplishment throughout your professional career?**
+
+Leading the migration of our monolithic legacy application to a microservices architecture without any downtime. It required meticulous planning, building robust CI/CD pipelines, and writing extensive data synchronization scripts. The migration reduced our deployment time from days to minutes and allowed the team to scale development efforts. The success was a testament to strong teamwork and rigorous engineering practices.
+
+---
+
+**Q: What was your biggest challenge throughout your professional career?**
+
+Taking over a critical project after the lead engineer suddenly left. The codebase had minimal documentation, and the deadline was tight. I had to quickly reverse-engineer the system, set up daily syncs with stakeholders to manage expectations, and rally the remaining team members. It was stressful, but we delivered the project on time, and the experience taught me the paramount importance of documentation and knowledge sharing.
+
+---
+
+**Q: What is your greatest strength?**
+
+My greatest strength is my strong engineering intuition and ability to solve highly complex, architectural challenges regardless of the technology stack. Because I consider myself technology-agnostic, I focus on core computer science principles and system design rather than getting tied to a specific framework. This allows me to adapt quickly, look at the big picture, and design robust solutions for the hardest technical problems a team faces.
+
+---
+
+**Q: What is your greatest weakness?**
+
+My greatest weakness is that I prefer to take my time to deeply understand a problem, which means I'm not always the fastest at on-the-fly context switching. Because my strength lies in solving complex, deep-focus challenges, frequent interruptions or rapid shifts between unrelated tasks can disrupt my flow. To manage this, I actively block out dedicated "deep work" time on my calendar and batch smaller tasks—like emails or minor code reviews—into specific windows so I can give my full attention to the complex problems when needed.
+
+---
+
+**Q: What is your target compensation?**
+
+I am currently focusing on finding the right fit in terms of role, team, and impact. I trust that your company offers competitive compensation based on market rates and my level of experience. Once we determine that I am the right candidate for the position, I am open to discussing specific numbers.
+
+---
+
+**Q: What questions do you have for me?**
+
+1. What does the onboarding process look like for this role?
+2. What are the biggest technical challenges your team is currently facing?
+3. How does the engineering team balance building new features with addressing technical debt?
+4. Can you describe a recent project where the team had to pivot quickly?
+
+---
+
+## 7. System Design & Technical Deep Dives
+
+**Q: Tell me about a backend system you designed or significantly improved. What was your role and what was the outcome?**
+
+I redesigned our notification service, which was originally a synchronous bottleneck causing timeouts during high-traffic events. I decoupled the system by introducing a Kafka-based event-driven architecture. I designed the producer/consumer models, implemented retry mechanisms, and added comprehensive monitoring. The outcome was a system that could handle 10x the previous load without degrading the user experience, reducing timeout errors to zero.
+
+---
+
+**Q: Describe a time when a production issue occurred under heavy load. How did you diagnose and resolve it?**
+
+During a major sale event, our checkout service started experiencing severe latency. I jumped on the incident call, checked our APM dashboard, and noticed a spike in database lock contention. I identified that a newly deployed inventory check query was missing an index, causing full table scans. I quickly wrote a migration to add the index, got it approved, and deployed it hot. Latency dropped to normal levels immediately. I later updated our CI pipeline to catch missing indexes during integration testing.
+
+---
+
+**Q: Tell me about a situation where you had to improve the performance or scalability of an application.**
+
+Our reporting dashboard was taking over 30 seconds to load for power users. I profiled the application and found that we were computing complex aggregations on the fly for every request. I implemented a caching layer using Redis for frequently accessed data and set up an asynchronous background worker to pre-compute the heavy aggregations nightly. Page load times dropped to under 2 seconds, drastically improving the user experience.
+
+---
+
+**Q: Give an example of a difficult technical decision you made involving architecture or system design. How did you approach it?**
+
+We had to decide whether to build our own authentication service or use a managed provider like Auth0. Building it in-house offered complete control and no vendor lock-in, but using Auth0 offered speed, compliance, and out-of-the-box security. I wrote an architecture decision record (ADR) comparing the costs, engineering effort, and long-term maintenance. I recommended Auth0 because authentication wasn't our core competency. The team agreed, and it saved us months of development time.
+
+---
+
+**Q: Describe a time when you disagreed with another engineer or architect on a technical solution. What happened?**
+
+A senior architect proposed using a complex distributed transaction model for a new feature. I felt it introduced unnecessary coupling and failure points. Instead of arguing, I modeled the failure scenarios on a whiteboard and demonstrated how a simpler saga pattern with eventual consistency would meet the business requirements while being more resilient. By focusing on the trade-offs and business needs rather than personal opinions, we reached a consensus and adopted the simpler approach.
+
+---
+
+**Q: Tell me about a project where you had to balance speed of delivery with code quality or technical debt.**
+
+We had a hard regulatory deadline to implement a new compliance feature. Doing it "perfectly" would take three months, but we only had one. I proposed a tactical solution that met the compliance requirements but bypassed some of our standard architectural patterns, clearly documenting the shortcuts as technical debt. We hit the deadline and avoided fines. In the next quarter, I championed prioritizing a sprint to refactor the module to our standard architecture.
+
+---
+
+**Q: Describe a time when you identified a reliability or stability risk before it became a major issue.**
+
+While reviewing logs for an unrelated issue, I noticed that a third-party API we depended on was occasionally taking 5+ seconds to respond, though it wasn't failing entirely. Our system didn't have timeouts configured for this client, meaning a complete degradation of the third-party service could exhaust our thread pool and take down our application. I proactively implemented circuit breakers and sensible timeouts using Resilience4j before the third-party service eventually did experience a severe outage. Our app degraded gracefully.
+
+---
+
+**Q: Tell me about the most challenging distributed system or microservices problem you've solved.**
+
+Solving a race condition across three microservices that resulted in occasional duplicate order processing. Because the services communicated asynchronously via an event bus, message delivery wasn't guaranteed to be strictly ordered. I solved it by implementing a robust idempotency key mechanism across all consumers and introducing a distributed lock using Redis to ensure that concurrent processing of the same entity was serialized.
+
+---
+
+**Q: Give an example of how you've mentored junior engineers or elevated the performance of a team.**
+
+I noticed our junior engineers were hesitant to participate in architecture discussions. I started a bi-weekly "Design Club" where we would review an architecture of a well-known system (like Netflix or Uber) and discuss the trade-offs in a low-pressure environment. I also paired them with senior engineers for small design tasks. Over time, their confidence grew, and they started actively contributing to our own system design reviews.
+
+---
+
+**Q: Describe a situation where requirements were unclear or constantly changing. How did you handle it?**
+
+On a greenfield project for a new market segment, the product owner kept shifting the requirements as early user feedback came in. Instead of getting frustrated, I shifted our engineering approach to be extremely modular and heavily utilized feature flags. I proposed shorter, one-week iterations so we could adapt faster. I communicated clearly that shifting requirements meant we needed to focus on flexible, easily reversible decisions rather than premature optimization.
+
+---
+
+**Q: Tell me about a time when a project fell behind schedule. What actions did you take?**
+
+We were building a new payment integration and underestimated the complexity of the vendor's API. I realized two weeks in that we were behind. I immediately flagged the issue to the product manager. We sat down and reviewed the scope, identifying "must-have" features versus "nice-to-haves." By deferring the complex refund automation to phase 2 and focusing only on capturing payments, we were able to launch a viable product on the original date.
+
+---
+
+**Q: Describe a major system migration, modernization, or refactoring effort you participated in.**
+
+I led the migration of our on-premise monolithic application to containerized workloads on AWS EKS. We adopted a strangler fig pattern, gradually moving stateless services first. I set up the Terraform scripts for the infrastructure and created a CI/CD pipeline using GitHub Actions. The biggest challenge was data migration, which we handled using read-replicas and careful cutover planning. The result was improved scalability and a significant reduction in infrastructure costs.
+
+---
+
+**Q: Tell me about a time when monitoring, observability, or metrics helped you solve a critical problem.**
+
+Users reported intermittent failures during checkout, but our basic error logs showed nothing. I dug into our distributed tracing system (Jaeger) and found that the failures only occurred when a specific background job was running, causing a resource contention issue on the database. Because we had correlated trace IDs across all services, I could pinpoint the exact query causing the lock and refactor the background job to batch its writes, resolving the issue.
+
+---
+
+**Q: Describe a situation where you had to influence stakeholders or leadership on a technical matter.**
+
+Leadership wanted to continue building features on our legacy system, but developer velocity was grinding to a halt due to technical debt. I gathered data showing that we spent 40% of our time fixing regressions and presented a case for a dedicated refactoring phase. I didn't frame it as a technical necessity, but as a business enabler: "If we invest one month now, we can increase feature delivery speed by 30% next quarter." Framing it in terms of ROI secured their buy-in.
+
+---
+
+**Q: Looking back on a project that didn't go well, what would you do differently today?**
+
+Early in my career, I spent months building a feature exactly as specified by the product manager, only to find out upon release that users didn't want it. The project failed because we worked in a vacuum. Today, I would insist on releasing a bare-bones MVP or even a simple prototype to gather user feedback before committing to months of engineering effort. I learned that fast feedback loops are just as important as code quality.
+
+---
+
+**Q: If something fails in production, what are your actions?**
+
+My first priority during a production incident is always time-to-mitigation—meaning I want to restore the user experience as quickly as possible, even before I fully understand the root cause. First, I acknowledge the alert and communicate to the team and stakeholders that I am looking into it. Second, I immediately look for the fastest way to stop the bleeding. If we just deployed, my default action is to hit the rollback button or toggle off the new feature flag. If it's a traffic spike, I might scale up our pods or throttle incoming requests. Only after the system is stabilized and users are no longer experiencing errors do I move to the diagnosis phase. I dig into our observability tools—looking at logs, latency metrics, and distributed traces—to find the exact bug or bottleneck. Once I write the fix, I ensure it's covered by a new automated test so the issue can't regress, and push it through our CI/CD pipeline. Finally, and most importantly, I always advocate for a blameless post-mortem a day or two later to document what happened and add better guardrails for the future.
